@@ -63,3 +63,74 @@ Lista *insere(Lista *l, int i)
     return novo;
 }
 ```
+
+**Para inserir na cauda e cabeça utilizando vetor**
+
+```c
+
+void inserecauda(int num)
+{
+    if (!cheia())
+    {
+        lista[cauda] = num;
+        cauda++;
+    }
+    else
+    {
+        printf("cheia\n");
+    }
+}
+
+
+void inserecabeca(int num)
+{
+int i;
+
+    if (!cheia())
+    {
+        for (i = cauda; i > cabeca; i--)
+        {
+            lista[i] = lista[i - 1];
+        }
+
+        lista[cabeca] = num;
+        cauda++;
+    }
+    else
+    {
+        printf("cheia\n");
+    }
+
+}
+
+```
+
+**Para inserir utilizando no/ponteiro**
+
+```c
+//insere no inicio retorna a lista atualizada
+Lista *insereNaCauda(Lista *l, int i) //final
+{
+    Lista *novo = (Lista *)malloc(sizeof(Lista));
+    Lista *aux = (Lista *)malloc(sizeof(Lista));
+    novo->dado = i;
+
+    while (l->prox != NULL)
+    {
+        aux = aux->prox;
+    }
+
+    novo->dado = i;
+    aux->prox;
+    return aux;
+}
+
+//insere no inicio retorna a lista atualizada
+Lista *insereNaCabeca(Lista *l, int i) //no inicio
+{
+    Lista *novo = (Lista *)malloc(sizeof(Lista));
+    novo->dado = i;
+    novo->prox = l;
+    return novo;
+}
+```
