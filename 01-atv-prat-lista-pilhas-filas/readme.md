@@ -134,3 +134,49 @@ Lista *insereNaCabeca(Lista *l, int i) //no inicio
     return novo;
 }
 ```
+
+## 1 - Primeira Pilha
+
+**TAD da Pilha, seguindo o padrão anterior de lista encadeada**
+
+```c
+typedef struct pilha Pilha;
+
+struct pilha
+{
+    int dado;
+    char *prox;
+};
+```
+
+**Inserindo um item na Pilha**
+
+```c
+Pilha *push(Pilha *pilha, int dado)
+{
+    Pilha *aux;
+    if (pilha == NULL)
+    {
+        return NULL;
+    }
+    aux = pilha;
+    pilha = criaNo(dado);
+    pilha->prox = aux;
+    return pilha;
+}
+```
+
+**Removendo um item da Pilha**
+
+```c
+int pop(Pilha **pilha)
+{
+    Pilha *aux;
+    aux = *pilha;
+    if (*pilha != NULL)
+    {
+        *pilha = aux->prox;
+    }
+    return aux->dado;
+}
+```
